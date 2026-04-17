@@ -7,55 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0f131e",
-        surface: "#0f131e",
-        "surface-dim": "#0f131e",
-        "surface-bright": "#353945",
-        "surface-container-lowest": "#0a0e19",
-        "surface-container-low": "#171b27",
-        "surface-container": "#1b1f2b",
-        "surface-container-high": "#262a36",
-        "surface-container-highest": "#313441",
-        "on-surface": "#dfe2f2",
-        "on-surface-variant": "#c7c4d7",
-        primary: "#c0c1ff",
-        "on-primary": "#1000a9",
-        "primary-container": "#8083ff",
-        "on-primary-container": "#0d0096",
-        secondary: "#5de6ff",
-        "on-secondary": "#00363e",
-        "secondary-container": "#00cbe6",
-        "on-secondary-container": "#00515d",
-        tertiary: "#4edea3",
-        "on-tertiary": "#003824",
-        "tertiary-container": "#00885d",
-        "on-tertiary-container": "#000703",
-        error: "#ffb4ab",
-        "on-error": "#690005",
-        "error-container": "#93000a",
-        "on-error-container": "#ffdad6",
-        outline: "#908fa0",
-        "outline-variant": "#464554",
+        background: "#f9fafb", // Gray-50
+        surface: "#ffffff",    // White
+        "on-surface": "#111827", // Gray-900
+        "on-surface-variant": "#6b7280", // Gray-500
+        primary: "#6366f1",    // Indigo-500
+        "on-primary": "#ffffff",
+        secondary: "#0ea5e9",  // Sky-500
+        tertiary: "#8b5cf6",   // Violet-500
+        success: "#10b981",    // Emerald-500
+        warning: "#f59e0b",    // Amber-500
+        error: "#f43f5e",      // Rose-500
+        outline: "#e5e7eb",    // Gray-200
+        "outline-variant": "#d1d5db", // Gray-300
       },
       fontFamily: {
         headline: ["Inter", "sans-serif"],
         body: ["Inter", "sans-serif"],
         label: ["Inter", "sans-serif"],
       },
-      animation: {
-        "agent-pulse": "agent-pulse 2s infinite",
-        "glow-cyan": "glow-cyan 3s ease-in-out infinite alternate",
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
       },
-      keyframes: {
-        "agent-pulse": {
-          "0%": { boxShadow: "0 0 0 0 rgba(93, 230, 255, 0.4)" },
-          "70%": { boxShadow: "0 0 0 10px rgba(93, 230, 255, 0)" },
-          "100%": { boxShadow: "0 0 0 0 rgba(93, 230, 255, 0)" },
-        },
-        "glow-cyan": {
-          "0%": { shadow: "0 0 10px rgba(93, 230, 255, 0.2)" },
-          "100%": { shadow: "0 0 30px rgba(93, 230, 255, 0.5)" },
-        }
+      boxShadow: {
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       }
     },
   },

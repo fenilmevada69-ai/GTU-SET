@@ -1,48 +1,71 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const DesktopSidebar = ({ logout }: { logout: () => void }) => {
+const navItems = [
+  { path: '/dashboard', icon: 'dashboard', label: 'Dashboard' },
+  { path: '/', icon: 'search', label: 'Scanner' },
+  { path: '/training', icon: 'school', label: 'Neural Academy' },
+  { path: '/history', icon: 'history', label: 'Registry' },
+];
+
+const DesktopSidebar = ({ onLogout }: { onLogout: () => void }) => {
+  const location = useLocation();
+
   return (
-    <aside className="hidden lg:flex flex-col py-8 px-4 gap-2 h-screen w-64 fixed left-0 top-0 z-40 glass-panel">
-      <div className="mb-10 px-4 flex items-center gap-3">
-        <span className="material-symbols-outlined text-2xl text-primary animate-pulse">shield_person</span>
-        <span className="text-xl font-headline font-extrabold tracking-tighter text-on-surface">CYBER<span className="text-secondary">AI</span></span>
-      </div>
-      
-      <nav className="flex flex-col gap-1 flex-1">
-        <NavItem to="/dashboard" icon="dashboard" label="Dashboard" />
-        <NavItem to="/" icon="search" label="Threat Scan" />
-        <NavItem to="/training" icon="psychology" label="Neural Training" />
-        <NavItem to="/history" icon="history" label="Activity Logs" />
-        
-        <div className="mt-auto px-2">
-           <button 
-             onClick={logout}
-             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:text-error hover:bg-error/5 transition-colors duration-200"
-           >
-             <span className="material-symbols-outlined">logout</span>
-             <span className="font-medium text-sm">System Logout</span>
-           </button>
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-outline flex flex-col z-50">
+      {/* Brand */}
+      <div className="p-8 pb-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+            <span className="material-symbols-outlined text-white text-2xl">shield_percent</span>
+          </div>
+          <div>
+             <h1 className="text-xl font-headline font-extrabold tracking-tight text-on-surface">CyberAware</h1>
+             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">AI Guardian</p>
+          </div>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 px-4 space-y-1">
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-sm transition-all group ${
+                isActive 
+                  ? 'bg-primary/5 text-primary' 
+                  : 'text-on-surface-variant hover:bg-background hover:text-on-surface'
+              }`}
+            >
+              <span className={`material-symbols-outlined text-xl transition-colors ${
+                isActive ? 'text-primary' : 'text-on-surface-variant group-hover:text-on-surface'
+              }`}>
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+              {isActive && (
+                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />
+              )}
+            </Link>
+          );
+        })}
       </nav>
+
+      {/* Footer / Account */}
+      <div className="p-4 border-t border-outline">
+        <button 
+          onClick={onLogout}
+          className="w-full flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-sm text-error hover:bg-error/5 transition-all"
+        >
+          <span className="material-symbols-outlined text-xl">logout</span>
+          <span>Logout Session</span>
+        </button>
+      </div>
     </aside>
   );
 };
-
-const NavItem = ({ to, icon, label }: { to: string, icon: string, label: string }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) => `
-      flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group
-      ${isActive 
-        ? 'text-secondary bg-secondary/5 relative after:absolute after:left-0 after:w-1 after:h-6 after:bg-secondary after:rounded-r-full shadow-[0_0_20px_rgba(93,230,255,0.05)]' 
-        : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high'
-      }
-    `}
-  >
-    <span className={`material-symbols-outlined transition-transform duration-300 group-hover:scale-110`}>{icon}</span>
-    <span className="font-headline font-medium tracking-tight text-sm">{label}</span>
-  </NavLink>
-);
 
 export default DesktopSidebar;

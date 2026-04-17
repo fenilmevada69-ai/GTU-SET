@@ -1,42 +1,53 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+const navItems = [
+  { path: '/dashboard', icon: 'dashboard', label: 'Home' },
+  { path: '/history', icon: 'history', label: 'History' },
+  { path: '/', icon: 'search', label: 'Scan', primary: true },
+  { path: '/training', icon: 'school', label: 'Learn' },
+  { path: '/login', icon: 'account_circle', label: 'Profile' },
+];
 
 const MobileBottomBar = () => {
-  return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-slate-950/80 backdrop-blur-xl z-50 flex items-center justify-around px-2 border-t border-outline-variant/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.5)]">
-      <BottomNavItem to="/dashboard" icon="dashboard" label="Home" />
-      <BottomNavItem to="/history" icon="history" label="Logs" />
-      
-      {/* Central Action Button */}
-      <div className="relative -top-6">
-        <Link 
-          to="/" 
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-2xl shadow-primary/40 flex items-center justify-center transition-transform active:scale-90"
-        >
-          <span className="material-symbols-outlined text-3xl">add</span>
-        </Link>
-      </div>
+  const location = useLocation();
 
-      <BottomNavItem to="/training" icon="psychology" label="Training" />
-      <BottomNavItem to="/settings" icon="settings" label="Config" />
-    </nav>
+  return (
+    <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white/90 backdrop-blur-lg border-t border-outline px-4 pb-6 pt-2 z-50 flex justify-between items-center shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+      {navItems.map((item) => {
+        const isActive = location.pathname === item.path;
+        
+        if (item.primary) {
+          return (
+            <Link key={item.path} to={item.path} className="relative -top-6">
+              <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30 border-4 border-background animate-pulse">
+                <span className="material-symbols-outlined text-white text-2xl font-bold">search</span>
+              </div>
+            </Link>
+          );
+        }
+
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className="flex flex-col items-center gap-1 group py-1"
+          >
+            <span className={`material-symbols-outlined text-2xl transition-all ${
+              isActive ? 'text-primary scale-110 drop-shadow-[0_2px_4px_rgba(99,102,241,0.2)]' : 'text-on-surface-variant group-hover:text-on-surface'
+            }`}>
+              {item.icon}
+            </span>
+            <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${
+              isActive ? 'text-primary' : 'text-on-surface-variant'
+            }`}>
+              {item.label}
+            </span>
+          </Link>
+        );
+      })}
+    </div>
   );
 };
-
-const BottomNavItem = ({ to, icon, label }: { to: string, icon: string, label: string }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) => `
-      flex flex-col items-center gap-1 group transition-colors duration-200 w-12
-      ${isActive ? 'text-secondary' : 'text-on-surface-variant hover:text-on-surface'}
-    `}
-  >
-    <span className={`material-symbols-outlined text-xl`}>{icon}</span>
-    <span className="text-[10px] font-medium tracking-tight">{label}</span>
-    <NavLink to={to}>
-       {({ isActive }) => isActive && <div className="absolute -top-1 w-1 h-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(93,230,255,0.6)]" />}
-    </NavLink>
-  </NavLink>
-);
 
 export default MobileBottomBar;

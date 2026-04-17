@@ -1,27 +1,48 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DesktopSidebar from './DesktopSidebar';
 import MobileBottomBar from './MobileBottomBar';
 
 interface MainLayoutProps {
   children: React.ReactNode;
-  logout: () => void;
-  showNav?: boolean;
+  isAuthenticated: boolean;
+  setAuth: (auth: boolean) => void;
 }
 
-const MainLayout = ({ children, logout, showNav = true }: MainLayoutProps) => {
+const MainLayout = ({ children, isAuthenticated, setAuth }: MainLayoutProps) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isLoginPage = location.pathname === '/login';
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setAuth(false);
+    navigate('/login');
+  };
+
+  if (isLoginPage) return <>{children}</>;
+
   return (
-    <div className="min-h-screen bg-background text-on-surface flex flex-col lg:flex-row relative overflow-hidden">
-      {/* Ambient Glow Blobs */}
-      <div className="glow-blob top-1/4 -left-32 w-96 h-96 bg-primary/10" />
-      <div className="glow-blob bottom-1/4 -right-32 w-96 h-96 bg-secondary/10" />
-      
-      {showNav && <DesktopSidebar logout={logout} />}
-      
-      <main className={`flex-1 relative z-10 transition-all duration-300 ${showNav ? 'lg:pl-64 pb-24 lg:pb-8' : ''}`}>
-        {children}
+    <div className="min-h-screen bg-background text-on-surface">
+      {/* Desktop Navigation */}
+      <div className="hidden lg:block">
+        <DesktopSidebar onLogout={handleLogout} />
+      </div>
+
+      {/* Mobile Navigation */}
+      <MobileBottomBar />
+
+      {/* Main Content Area */}
+      <main className={`lg:pl-64 min-h-screen transition-all duration-300 ${
+        isAuthenticated ? 'pb-24 lg:pb-0' : ''
+      }`}>
+        <div className="relative z-10 w-full min-h-screen">
+          {children}
+        </div>
       </main>
 
-      {showNav && <MobileBottomBar />}
+      {/* Clean Background Utility */}
+      <div className="fixed inset-0 bg-background -z-10" />
     </div>
   );
 };

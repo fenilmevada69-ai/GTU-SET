@@ -7,31 +7,22 @@
 
 @layer base {
   body {
-    @apply bg-background text-on-surface font-body antialiased selection:bg-primary-container/30;
+    @apply bg-background text-on-surface font-body antialiased selection:bg-primary/10;
     min-height: 100vh;
   }
 }
 
 @layer components {
   .neural-card {
-    @apply bg-surface-container-low rounded-xl border border-outline-variant/10 transition-all duration-300;
+    @apply bg-surface rounded-xl border border-outline shadow-sm transition-all duration-200 hover:shadow-md;
   }
   
   .glass-panel {
-    @apply bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)];
-  }
-
-  .neural-blur {
-    @apply backdrop-blur-[20px];
-  }
-
-  .neon-text-cyan {
-    @apply text-secondary drop-shadow-[0_0_8px_rgba(93,230,255,0.4)];
+    @apply bg-white/80 backdrop-blur-md border border-gray-200 shadow-premium;
   }
 
   .no-border-container {
-     /* Using tonal layering instead of borders */
-     @apply bg-surface-container-low;
+     @apply bg-background;
   }
 
   /* Material Symbols Helper */
@@ -55,10 +46,4 @@
     background: white !important;
     color: black !important;
   }
-}
-
-/* Ambient Glow Blobs */
-.glow-blob {
-  @apply fixed rounded-full pointer-events-none z-0;
-  filter: blur(120px);
 }
