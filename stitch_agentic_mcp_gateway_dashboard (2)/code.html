@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Execution Logs - MCP Gateway</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f131e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-panel {
+            background: rgba(15, 19, 30, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00515d",
+                        "primary-container": "#8083ff",
+                        "surface-bright": "#353945",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#000703",
+                        "on-surface": "#dfe2f2",
+                        "on-primary": "#1000a9",
+                        "surface-container-highest": "#313441",
+                        "outline-variant": "#464554",
+                        "on-error": "#690005",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-primary": "#494bd6",
+                        "secondary": "#5de6ff",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "on-primary-fixed": "#07006c",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-background": "#dfe2f2",
+                        "secondary-fixed": "#a2eeff",
+                        "surface-container": "#1b1f2b",
+                        "tertiary-container": "#00885d",
+                        "inverse-on-surface": "#2c303c",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-fixed": "#001f25",
+                        "outline": "#908fa0",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-variant": "#313441",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-high": "#262a36",
+                        "surface-container-lowest": "#0a0e19",
+                        "tertiary": "#4edea3",
+                        "surface-dim": "#0f131e",
+                        "surface-container-low": "#171b27",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-secondary": "#00363e",
+                        "inverse-surface": "#dfe2f2",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary": "#003824",
+                        "on-primary-container": "#0d0096",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#0f131e",
+                        "secondary-container": "#00cbe6",
+                        "error-container": "#93000a",
+                        "primary": "#c0c1ff",
+                        "surface": "#0f131e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 h-16 z-30 bg-slate-950/40 backdrop-blur-md flex items-center justify-between px-6 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-indigo-200" data-icon="search">search</span>
+<span class="text-indigo-200 font-['Inter'] text-sm tracking-normal">Describe your workflow...</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="User Profile Avatar" data-alt="Abstract geometric avatar icon with deep indigo and cyan colors on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8K3cuhJovjqz5vq10ck3ZBaniS9VF0Gqyru8LzFUCqPTEcc4IbgXmMEP2vhdjW_knfFvNJy8HmXh83Nh64bqheRQxrOJBLZLkjDD-R6rilvj9Jq4w6wM7ykLLM6OfuMZ3-rCHnjOrOEEkdCahfEFaNoATl9Tb5M-CSAOIjBLyOJmjm0oDodTi0PunCBQktKULSBAVV_ZJVB4nx_kNXmNU_E4l4pONSz7XX0SKljbbMkdoisSIeN0WhE13kc6JuFUjR99535DFGCZ"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-4 max-w-md mx-auto">
+<!-- Header Section -->
+<section class="mb-8">
+<h1 class="text-2xl font-bold tracking-tighter text-indigo-300 mb-2">Logs</h1>
+<p class="text-on-surface-variant text-sm">Real-time execution stream across all active gateways.</p>
+</section>
+<!-- Filter Chips (Semantic Horizontal List) -->
+<div class="flex gap-2 mb-6 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold whitespace-nowrap">All Logs</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold whitespace-nowrap">Success</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold whitespace-nowrap">Retries</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold whitespace-nowrap">Failures</button>
+</div>
+<!-- Execution Timeline -->
+<div class="space-y-4">
+<!-- Log Entry: Success -->
+<div class="bg-surface-container-low rounded-xl p-4 transition-all active:scale-[0.98] border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-on-surface">Data Sync Engine</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">09:42:12 AM • ID: EXEC-8821</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-tertiary-fixed-dim bg-tertiary-fixed-dim/5 px-2 py-0.5 rounded">1.2s</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[11px] font-mono text-secondary">INFO</span>
+<span class="text-[11px] font-mono text-on-surface-variant">Validated 428 records from PostgreSQL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-mono text-secondary">INFO</span>
+<span class="text-[11px] font-mono text-on-surface-variant">Pushed vector embeddings to Pinecone</span>
+</div>
+</div>
+</div>
+<!-- Log Entry: Retry -->
+<div class="bg-surface-container-low rounded-xl p-4 transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-lg" data-icon="replay">replay</span>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-on-surface">Slack Notification Hook</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">09:40:05 AM • ID: EXEC-8819</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-primary-container bg-primary-container/5 px-2 py-0.5 rounded">Attempt 2</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-mono text-primary">WARN</span>
+<span class="text-[11px] font-mono text-on-surface-variant italic">Rate limit exceeded. Retrying in 500ms...</span>
+</div>
+</div>
+</div>
+<!-- Log Entry: Failed -->
+<div class="bg-surface-container-low rounded-xl p-4 transition-all active:scale-[0.98] border border-error/5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-lg" data-icon="dangerous">dangerous</span>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-on-surface">Custom AI Agent (GTP-4)</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">09:38:58 AM • ID: EXEC-8815</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-error bg-error/5 px-2 py-0.5 rounded">404</span>
+</div>
+<div class="bg-error-container/5 rounded-lg p-3 border border-error/10">
+<div class="flex items-start gap-2">
+<span class="text-[11px] font-mono text-error font-bold">ERROR</span>
+<span class="text-[11px] font-mono text-error/80">Missing source parameter: 'knowledge_base_id'. Authentication cycle terminated unexpectedly.</span>
+</div>
+<button class="mt-2 text-[10px] font-bold text-error uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="bug_report">bug_report</span> View Stack Trace
+                    </button>
+</div>
+</div>
+<!-- Log Entry: Success -->
+<div class="bg-surface-container-low rounded-xl p-4 transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-on-surface">Cloudflare Worker Proxy</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">09:35:12 AM • ID: EXEC-8810</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-tertiary-fixed-dim bg-tertiary-fixed-dim/5 px-2 py-0.5 rounded">84ms</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-mono text-secondary">INFO</span>
+<span class="text-[11px] font-mono text-on-surface-variant">Request routed to us-east-1 production cluster.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More -->
+<button class="w-full mt-8 py-3 rounded-xl bg-surface-container-highest text-on-surface text-sm font-medium border border-outline-variant/10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+            Load older logs
+        </button>
+</main>
+<!-- BottomNavBar (Mobile Responsive from NavigationDrawer JSON logic) -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-slate-950/60 backdrop-blur-xl flex items-center justify-around px-4 z-40 border-t border-white/5 md:hidden">
+<div class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-['Inter'] font-medium tracking-tight">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="text-[10px] font-['Inter'] font-medium tracking-tight">Workflows</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span class="text-[10px] font-['Inter'] font-medium tracking-tight">Integrations</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-cyan-400 relative active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-[10px] font-['Inter'] font-medium tracking-tight">Logs</span>
+<div class="absolute -top-1 w-1 h-1 bg-cyan-400 rounded-full"></div>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-['Inter'] font-medium tracking-tight">Settings</span>
+</div>
+</nav>
+<!-- Floating Action Button for Filter/Search (Contextual) -->
+<div class="fixed bottom-20 right-4 z-30">
+<button class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container shadow-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</body></html>

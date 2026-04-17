@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body antialiased selection:bg-primary-container/30;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .neural-card {
+    @apply bg-surface-container-low rounded-xl border border-outline-variant/10 transition-all duration-300;
+  }
+  
+  .glass-panel {
+    @apply bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)];
+  }
+
+  .neural-blur {
+    @apply backdrop-blur-[20px];
+  }
+
+  .neon-text-cyan {
+    @apply text-secondary drop-shadow-[0_0_8px_rgba(93,230,255,0.4)];
+  }
+
+  .no-border-container {
+     /* Using tonal layering instead of borders */
+     @apply bg-surface-container-low;
+  }
+
+  /* Material Symbols Helper */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Ambient Glow Blobs */
+.glow-blob {
+  @apply fixed rounded-full pointer-events-none z-0;
+  filter: blur(120px);
+}

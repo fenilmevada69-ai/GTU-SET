@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00515d",
+                    "primary-container": "#8083ff",
+                    "surface-bright": "#353945",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-container": "#000703",
+                    "on-surface": "#dfe2f2",
+                    "on-primary": "#1000a9",
+                    "surface-container-highest": "#313441",
+                    "outline-variant": "#464554",
+                    "on-error": "#690005",
+                    "primary-fixed": "#e1e0ff",
+                    "inverse-primary": "#494bd6",
+                    "secondary": "#5de6ff",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "on-primary-fixed": "#07006c",
+                    "on-surface-variant": "#c7c4d7",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-background": "#dfe2f2",
+                    "secondary-fixed": "#a2eeff",
+                    "surface-container": "#1b1f2b",
+                    "tertiary-container": "#00885d",
+                    "inverse-on-surface": "#2c303c",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-fixed": "#001f25",
+                    "outline": "#908fa0",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "surface-variant": "#313441",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed": "#6ffbbe",
+                    "surface-container-high": "#262a36",
+                    "surface-container-lowest": "#0a0e19",
+                    "tertiary": "#4edea3",
+                    "surface-dim": "#0f131e",
+                    "surface-container-low": "#171b27",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-secondary": "#00363e",
+                    "inverse-surface": "#dfe2f2",
+                    "surface-tint": "#c0c1ff",
+                    "on-tertiary": "#003824",
+                    "on-primary-container": "#0d0096",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "background": "#0f131e",
+                    "secondary-container": "#00cbe6",
+                    "error-container": "#93000a",
+                    "primary": "#c0c1ff",
+                    "surface": "#0f131e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(27, 31, 43, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .agent-pulse {
+            position: relative;
+        }
+        .agent-pulse::before, .agent-pulse::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #5de6ff;
+            opacity: 0.2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container/30">
+<!-- TopAppBar (Mobile View Focus) -->
+<header class="fixed top-0 left-0 right-0 h-16 z-30 bg-slate-950/40 backdrop-blur-md flex items-center justify-between px-6 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-300" data-icon="search">search</span>
+<h1 class="font-['Inter'] text-sm tracking-normal text-indigo-200">Describe your workflow...</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden ring-1 ring-outline-variant/20">
+<img alt="User Profile Avatar" data-alt="professional user profile portrait with neutral background and soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtaUoGDwi5tB2rHcTK5zZhG046gTq78ti-pRLg2JOzkXQJ0oEgsY9HvJcESk6846WUcIeRPUIh3hno6NFSg-zDRJ36FAjS74ODO2ymIRim9a3TgiXoOCQke3omKnGJipisPNGMD2mQkAfAjGhrdB1z_pCJ84l-BNvYrdQAwARB6x8VGjqKC2cyiqjr0PRYA97F14tN9HvMjxnlf_KpbH0icL8ikP3EQAC4--2x9yvdclksfAhBRApO1Gj7l53FVW9owvxDnAz8Hqb2"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="pt-20 pb-24 px-4 min-h-screen">
+<!-- Welcome Header -->
+<div class="mb-8 px-2">
+<h2 class="text-xs font-label uppercase tracking-[0.1em] text-secondary mb-1">System Overview</h2>
+<div class="flex items-baseline gap-2">
+<h3 class="text-2xl font-headline font-semibold text-on-surface">MCP Gateway</h3>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-container/10 border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary agent-pulse"></span>
+<span class="text-[10px] font-medium text-secondary tracking-tight">LIVE OPS</span>
+</div>
+</div>
+</div>
+<!-- Metric Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<!-- Active Workflows -->
+<div class="glass-card p-5 rounded-xl border border-outline-variant/10 col-span-1 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-3" data-icon="account_tree">account_tree</span>
+<p class="text-[10px] font-label text-on-surface-variant tracking-wider uppercase">Active</p>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold tracking-tighter text-on-surface">14</span>
+<span class="text-[10px] text-tertiary block">+2 this hour</span>
+</div>
+</div>
+<!-- Success Rate -->
+<div class="glass-card p-5 rounded-xl border border-outline-variant/10 col-span-1 bg-gradient-to-br from-surface-container-low to-surface-container-lowest">
+<div>
+<span class="material-symbols-outlined text-tertiary mb-3" data-icon="check_circle">check_circle</span>
+<p class="text-[10px] font-label text-on-surface-variant tracking-wider uppercase">Success</p>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-headline font-bold tracking-tighter text-tertiary">98%</span>
+<div class="w-full bg-surface-container-highest h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-tertiary h-full w-[98%]"></div>
+</div>
+</div>
+</div>
+<!-- Execution Trend (Wide Chart Card) -->
+<div class="glass-card p-6 rounded-xl border border-outline-variant/10 col-span-2">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-[10px] font-label text-on-surface-variant tracking-wider uppercase">Execution Trends</p>
+<h4 class="text-lg font-headline font-medium text-on-surface">System Throughput</h4>
+</div>
+<div class="text-right">
+<span class="text-xs font-medium text-primary-container">Avg. 1.2s</span>
+</div>
+</div>
+<!-- Simulated Line Chart -->
+<div class="h-24 w-full relative flex items-end gap-1">
+<div class="flex-1 bg-primary/10 rounded-t-sm min-h-[40%]" style="height: 45%"></div>
+<div class="flex-1 bg-primary/15 rounded-t-sm min-h-[50%]" style="height: 60%"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm min-h-[30%]" style="height: 35%"></div>
+<div class="flex-1 bg-primary/25 rounded-t-sm min-h-[70%]" style="height: 85%"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm min-h-[60%]" style="height: 70%"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm min-h-[90%]" style="height: 95%"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm min-h-[50%]" style="height: 65%"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm min-h-[40%]" style="height: 55%"></div>
+<div class="flex-1 bg-secondary/50 rounded-t-sm min-h-[85%]" style="height: 90%"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm min-h-[30%]" style="height: 40%"></div>
+</div>
+<div class="flex justify-between mt-3 text-[10px] text-outline font-medium tracking-tight">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+</div>
+</div>
+<!-- Connected Services -->
+<div class="glass-card p-5 rounded-xl border border-outline-variant/10 col-span-1">
+<span class="material-symbols-outlined text-secondary mb-3" data-icon="extension">extension</span>
+<p class="text-[10px] font-label text-on-surface-variant tracking-wider uppercase">Services</p>
+<span class="text-2xl font-headline font-bold tracking-tighter block mt-2">32</span>
+</div>
+<!-- Failed Executions -->
+<div class="glass-card p-5 rounded-xl border border-outline-variant/10 col-span-1">
+<span class="material-symbols-outlined text-error mb-3" data-icon="warning">warning</span>
+<p class="text-[10px] font-label text-on-surface-variant tracking-wider uppercase">Failed</p>
+<span class="text-2xl font-headline font-bold tracking-tighter block mt-2">04</span>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="px-2">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-sm font-headline font-semibold text-on-surface">Real-time Activity</h4>
+<button class="text-[10px] font-label text-primary-container uppercase tracking-widest">View All</button>
+</div>
+<div class="space-y-3">
+<!-- Activity Item 1 -->
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-high transition-colors">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="bolt">bolt</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h5 class="text-xs font-semibold text-on-surface truncate">Data Extraction Flow</h5>
+<span class="text-[9px] text-outline">2m ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Agent <span class="text-secondary">#442</span> successfully synthesized 1.2GB of vector data.</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low/50">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="sync">sync</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h5 class="text-xs font-semibold text-on-surface truncate">Sync: OpenAI o1-preview</h5>
+<span class="text-[9px] text-outline">15m ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Model context updated. New MCP tools mapped to workspace.</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low/50">
+<div class="w-8 h-8 rounded-lg bg-error/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error text-lg" data-icon="error_outline">error_outline</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h5 class="text-xs font-semibold text-on-surface truncate">Git-Action Timeout</h5>
+<span class="text-[9px] text-outline">1h ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Service timeout on branch 'main'. Retrying in 500ms.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Implementation of NavigationDrawer) -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-slate-950/60 backdrop-blur-xl flex justify-around items-center h-16 px-2 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.5)]">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-cyan-400 relative" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] font-medium tracking-tight text-[10px] mt-1">Dashboard</span>
+<div class="absolute bottom-1 w-1 h-1 bg-cyan-400 rounded-full"></div>
+</a>
+<!-- Workflows -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-['Inter'] font-medium tracking-tight text-[10px] mt-1">Workflows</span>
+</a>
+<!-- Integrations -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span class="font-['Inter'] font-medium tracking-tight text-[10px] mt-1">Integrations</span>
+</a>
+<!-- Logs -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-['Inter'] font-medium tracking-tight text-[10px] mt-1">Logs</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] font-medium tracking-tight text-[10px] mt-1">Settings</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) -->
+<div class="fixed bottom-20 right-6 z-50">
+<button class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-container shadow-xl flex items-center justify-center text-on-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Workflow Builder | MCP Gateway</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00515d",
+                        "primary-container": "#8083ff",
+                        "surface-bright": "#353945",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#000703",
+                        "on-surface": "#dfe2f2",
+                        "on-primary": "#1000a9",
+                        "surface-container-highest": "#313441",
+                        "outline-variant": "#464554",
+                        "on-error": "#690005",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-primary": "#494bd6",
+                        "secondary": "#5de6ff",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "on-primary-fixed": "#07006c",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-background": "#dfe2f2",
+                        "secondary-fixed": "#a2eeff",
+                        "surface-container": "#1b1f2b",
+                        "tertiary-container": "#00885d",
+                        "inverse-on-surface": "#2c303c",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-fixed": "#001f25",
+                        "outline": "#908fa0",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-variant": "#313441",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-high": "#262a36",
+                        "surface-container-lowest": "#0a0e19",
+                        "tertiary": "#4edea3",
+                        "surface-dim": "#0f131e",
+                        "surface-container-low": "#171b27",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-secondary": "#00363e",
+                        "inverse-surface": "#dfe2f2",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary": "#003824",
+                        "on-primary-container": "#0d0096",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#0f131e",
+                        "secondary-container": "#00cbe6",
+                        "error-container": "#93000a",
+                        "primary": "#c0c1ff",
+                        "surface": "#0f131e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .dag-grid {
+            background-image: radial-gradient(circle, rgba(93, 230, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .agent-pulse-ring {
+            box-shadow: 0 0 0 0 rgba(93, 230, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(93, 230, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(93, 230, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(93, 230, 255, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container/30">
+<!-- NavigationDrawer (Mobile: Hidden, following responsive pivot rule) -->
+<aside class="hidden md:flex flex-col py-6 px-4 gap-2 h-screen w-64 fixed left-0 top-0 z-40 bg-slate-950/60 backdrop-blur-xl shadow-[20px_0_40px_-15px_rgba(0,0,0,0.5)]">
+<div class="mb-8 px-4">
+<span class="text-lg font-semibold tracking-tighter text-indigo-300">MCP Gateway</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] font-medium tracking-tight text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-cyan-400 bg-cyan-400/5 relative after:absolute after:left-0 after:w-1 after:h-6 after:bg-cyan-400 after:rounded-r-full transition-transform active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-['Inter'] font-medium tracking-tight text-sm">Workflows</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="font-['Inter'] font-medium tracking-tight text-sm">Integrations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['Inter'] font-medium tracking-tight text-sm">Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/30 transition-colors duration-200 mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] font-medium tracking-tight text-sm">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- TopAppBar (Adjusted for Mobile/Desktop layout) -->
+<header class="fixed top-0 right-0 left-0 md:left-64 h-16 z-30 bg-slate-950/40 backdrop-blur-md flex items-center justify-between px-6 md:px-8 w-full border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-indigo-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-200">search</span>
+<span class="font-['Inter'] text-sm tracking-normal text-indigo-200 hidden sm:inline">Describe your workflow...</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-800/30 transition-all text-indigo-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional male software engineer in a modern dark-themed studio with cool ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkfuvP-wS0WQNoClEyQUaxtIFi5NBLzKYWqb6duS6IX-1_wV6Qthk_sU8Yarymv9v1ZAHQ4ShvImlp2b8Snzj7-1GXVQe2VQAa5T6eXqv9-PQ1-ijdCClNMXT7RgxmqxnzJadiMFwWYesrjlCJ1JnQI_RVyZQGfJvYdBHHDM3JomZ1u1HQ0S6P45sbAvmKgmnTgB8p3bLB39PFfCBKxf80S5jVr9AeMrOWDWPL0Ks84uXKdFQllRlyHfgjfMkQU0DCzFLN8sc3cCm9"/>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="pt-16 pb-32 md:pl-64 min-h-screen relative overflow-hidden bg-surface">
+<!-- DAG Builder Interface -->
+<div class="relative w-full h-[calc(100vh-12rem)] dag-grid overflow-hidden">
+<!-- Nodes Container (Simplified for Mobile) -->
+<div class="absolute inset-0 flex flex-col items-center justify-start p-8 gap-12">
+<!-- Node 1: Trigger -->
+<div class="relative group">
+<div class="w-64 p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 shadow-xl backdrop-blur-sm">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary opacity-70">Trigger</span>
+<span class="material-symbols-outlined text-sm text-secondary">bolt</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-indigo-300">webhook</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Webhook Received</p>
+<p class="text-[11px] text-on-surface-variant">Endpoint: /v1/github-push</p>
+</div>
+</div>
+</div>
+<!-- Connector Line Down -->
+<div class="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-12 bg-gradient-to-b from-secondary/50 to-transparent"></div>
+<div class="absolute top-[calc(100%+40px)] left-1/2 -translate-x-1/2">
+<span class="material-symbols-outlined text-secondary text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Node 2: Action -->
+<div class="relative mt-8">
+<div class="w-64 p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 shadow-xl backdrop-blur-sm">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary opacity-70">Action</span>
+<span class="material-symbols-outlined text-sm text-primary">terminal</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Create GitHub Branch</p>
+<p class="text-[11px] text-on-surface-variant">Repo: mcp-gateway-core</p>
+</div>
+</div>
+</div>
+<!-- Connector Line Down -->
+<div class="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-12 bg-gradient-to-b from-primary/50 to-transparent"></div>
+<div class="absolute top-[calc(100%+40px)] left-1/2 -translate-x-1/2">
+<span class="material-symbols-outlined text-primary text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Node 3: Action -->
+<div class="relative mt-8">
+<div class="w-64 p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 shadow-xl backdrop-blur-sm">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-tertiary opacity-70">Action</span>
+<span class="material-symbols-outlined text-sm text-tertiary">chat</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">send</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Send Slack Message</p>
+<p class="text-[11px] text-on-surface-variant">Channel: #ops-updates</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating AI Suggestion Button -->
+<div class="absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm">
+<button class="w-full py-3 px-6 rounded-full bg-surface-container-high/80 backdrop-blur-xl border border-secondary/20 shadow-[0_0_20px_rgba(93,230,255,0.1)] flex items-center justify-center gap-3 group transition-all active:scale-95">
+<span class="material-symbols-outlined text-secondary text-xl">auto_awesome</span>
+<span class="text-sm font-medium text-secondary">Generate workflow from prompt</span>
+</button>
+</div>
+<!-- Zoom/Tool Controls (Bottom Right) -->
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<button class="w-10 h-10 rounded-lg bg-surface-container-low border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-low border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-low border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">center_focus_weak</span>
+</button>
+</div>
+</div>
+<!-- AI Command Bar (Fixed Bottom) -->
+<div class="fixed bottom-0 left-0 md:left-64 right-0 p-4 bg-gradient-to-t from-background via-background to-transparent z-40">
+<div class="max-w-2xl mx-auto">
+<div class="relative">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-tertiary/20 rounded-2xl blur-lg opacity-50"></div>
+<div class="relative bg-surface-container-high/90 backdrop-blur-2xl border border-outline-variant/20 rounded-xl p-2 flex items-center gap-3">
+<!-- Thinking Indicator -->
+<div class="relative ml-2">
+<div class="w-2 h-2 rounded-full bg-secondary agent-pulse-ring"></div>
+</div>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-full placeholder:text-on-surface-variant/50" placeholder="Describe your workflow in natural language..." type="text"/>
+<button class="h-10 w-10 flex items-center justify-center rounded-lg bg-primary-container text-on-primary shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+</div>
+<div class="flex justify-center mt-3 gap-4">
+<span class="text-[10px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">keyboard_command_key</span> K to search
+                    </span>
+<span class="text-[10px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">lightbulb</span> Try "Sync GitHub to Slack"
+                    </span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Visible only on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-slate-950/80 backdrop-blur-xl z-50 flex items-center justify-around px-4 border-t border-outline-variant/10">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-cyan-400" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="text-[10px] font-medium">Workflows</span>
+</a>
+<div class="relative -top-6">
+<button class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-2xl shadow-primary/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="text-[10px] font-medium">Integrations</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+<!-- Ambient Glow Blobs -->
+<div class="fixed top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-1/4 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
+</body></html>
